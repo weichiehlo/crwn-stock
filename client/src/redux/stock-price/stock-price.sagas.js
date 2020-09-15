@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, takeEvery } from 'redux-saga/effects';
 
 import {APIKEY} from './key.js'
 
@@ -30,7 +30,7 @@ export function* fetchStockPricesAsync({payload}) {
 }
 
 export function* fetchStockPricesStart() {
-  yield takeLatest(
+  yield takeEvery(
     StockPricesActionTypes.FETCH_STOCK_PRICES_START,
     fetchStockPricesAsync
   );

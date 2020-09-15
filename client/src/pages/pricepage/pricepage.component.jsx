@@ -10,10 +10,12 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
   
   useEffect(() => {
     fetchStockPricesStart('JETS');
+    fetchStockPricesStart('TSLA');
   }, [fetchStockPricesStart]);
 
   console.log('-------------')
-  console.log(stockPrices)
+  console.log(stockPrices);
+
 
   return (
     <StockPriceContainer>
