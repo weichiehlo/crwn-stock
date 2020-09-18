@@ -78,5 +78,7 @@ export const convertStockData = (data)=>{
        
     }
 
-    return {"symbol":data["Meta Data"]["2. Symbol"],"price":getlatestAvg(),"average":getAllAvg(), "max":getMax(), "min":getMin()}
+    
+
+    return {[data["Meta Data"]["2. Symbol"]]:{"symbol":data["Meta Data"]["2. Symbol"],"price":getlatestAvg(),"average":getAllAvg(), "max":getMax(), "min":getMin()}}
 }

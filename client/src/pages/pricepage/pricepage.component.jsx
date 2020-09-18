@@ -15,6 +15,7 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
 
   console.log('-------------')
   console.log(stockPrices);
+  console.log('*************')
 
 
   return (

@@ -1,7 +1,7 @@
 import StockPricesActionTypes from './stock-price.types';
 
 const INITIAL_STATE = {
-  stockPrices: [],
+  stockPrices: {},
   isFetching: false,
   errorMessage: undefined
 };
@@ -17,7 +17,7 @@ const stockPricesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        stockPrices: [...state.stockPrices,action.payload]
+        stockPrices: {...state.stockPrices,...action.payload}
       };
     case StockPricesActionTypes.FETCH_STOCK_PRICES_FAILURE:
       return {

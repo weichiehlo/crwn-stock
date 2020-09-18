@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all, takeEvery } from 'redux-saga/effects';
+import { call, put, all, takeEvery } from 'redux-saga/effects';
 
 import {APIKEY} from './key.js'
 

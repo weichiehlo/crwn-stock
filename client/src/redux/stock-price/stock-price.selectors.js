@@ -4,5 +4,5 @@ const selectStockPrice = state => state.stockPrice;
 
 export const selectStockPrices = createSelector(
   [selectStockPrice],
-  stock => stock
+  stockPrice => stockPrice.stockPrices
 );
