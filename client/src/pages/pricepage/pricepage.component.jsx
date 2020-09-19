@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { selectStockPrices } from '../../redux/stock-price/stock-price.selectors.js'
 import { createStructuredSelector } from 'reselect';
 
+import StockPriceCardList from '../../components/stock-price-card-list/stock-price-card-list.component'
+
 const PricePage = ({fetchStockPricesStart,stockPrices}) => {
   
   useEffect(() => {
@@ -16,13 +18,18 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
   console.log('-------------')
   console.log(stockPrices);
   console.log('*************')
+  //
 
 
   return (
     <StockPriceContainer>
       <div>
-        This is suppose to display prices for a stock
+        <div>
+          This is suppose to display prices for a stock
+        </div>
+        <StockPriceCardList stocks={stockPrices}/>
       </div>
+      
     </StockPriceContainer>
   );
 }
