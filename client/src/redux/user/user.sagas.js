@@ -16,7 +16,7 @@ import {
   googleProvider,
   createUserProfileDocument,
   getCurrentUser,
-  addCartToFireStore
+  addStockToFireStore
 } from '../../firebase/firebase.utils';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
@@ -70,16 +70,16 @@ export function* isUserAuthenticated() {
   }
 }
 
-export function* saveCart(cartItems){
+export function* saveStocks(stocks){
   try{
     const userAuth = yield getCurrentUser();
   
 
     if (!userAuth) return;
-    yield call(addCartToFireStore,userAuth,cartItems)
+    yield call(addStockToFireStore,userAuth,stocks)
 
   }catch(error){
-    console.log('error saving cart')
+    console.log('error saving stocks')
     console.log(error)
   }
 }
@@ -87,7 +87,7 @@ export function* saveCart(cartItems){
 
 export function* signOut({payload}) {
   try {
-    yield saveCart(payload)
+    yield saveStocks(payload)
     yield auth.signOut();
     yield put(signOutSuccess());
   } catch (error) {

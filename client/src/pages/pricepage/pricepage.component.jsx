@@ -7,7 +7,7 @@ import { selectStockPrices } from '../../redux/stock-price/stock-price.selectors
 import { createStructuredSelector } from 'reselect';
 
 import StockPriceCardList from '../../components/stock-price-card-list/stock-price-card-list.component'
-import AddStockForm from '../../components/add-stock-form/add-stock-form.component'
+import AddStockForm from '../../components/add-stock-form/add-stock-form.component';
 
 const PricePage = ({fetchStockPricesStart,stockPrices}) => {
   
@@ -18,19 +18,13 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
 
   const [addField, setAddField] = useState("")
 
-  console.log('-------------')
-  console.log(stockPrices);
-  console.log('*************')
-  //
-
   const onChange = (event)=>{
-    setAddField(event.target.value)
+    setAddField(event.target.value.toUpperCase())
   }
 
-  const onSubmit = (event)=>{
+  const onSubmit = async(event)=>{
     event.preventDefault();
-    fetchStockPricesStart(addField);
-    console.log(addField)
+    await fetchStockPricesStart(addField);
   }
 
 

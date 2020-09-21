@@ -6,3 +6,10 @@ export const selectStockPrices = createSelector(
   [selectStockPrice],
   stockPrice => stockPrice.stockPrices
 );
+
+export const selectStockNames = createSelector(
+  [selectStockPrice],
+  stockPrice => Object.keys(stockPrice.stockPrices)
+  
+);
+

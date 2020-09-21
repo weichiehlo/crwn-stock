@@ -59,7 +59,7 @@ export const addCartToFireStore = async (userAuth, cartItems)=>{
         }
     }else{
         try{
-            await userRef.set(cartItems)
+            await userRef.update(cartItems)
 
         } catch(error){
             console.log('error updating cart', error.message)
@@ -77,6 +77,31 @@ export const loadCartFromFireStore= async(userAuth) =>{
     return cartItems
     
 }
+
+export const addStockToFireStore = async (userAuth, stocks)=>{
+    if(!userAuth) return;
+    const userRef = firestore.doc(`stocks/${userAuth.uid}`)
+
+    stocks = {...{userId:userAuth.uid},...{stocks:stocks}}
+
+    const snapShot = await userRef.get()
+    if(!snapShot.exists){
+        try{
+            await userRef.set(stocks)
+
+        } catch(error){
+            console.log('error saving stocks', error.message)
+        }
+    }else{
+        try{
+            await userRef.set(stocks)
+
+        } catch(error){
+            console.log('error updating stocks', error.message)
+        }
+    }
+}
+
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) =>{
     const collectionRef = firestore.collection(collectionKey);
@@ -125,3 +150,4 @@ googleProvider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 export default firebase;
+
