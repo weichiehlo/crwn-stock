@@ -13,3 +13,7 @@ export const selectStockNames = createSelector(
   
 );
 
+export const selectIsStockPriceFetching = createSelector(
+  [selectStockPrice],
+  stockPrice => stockPrice.isFetching
+);

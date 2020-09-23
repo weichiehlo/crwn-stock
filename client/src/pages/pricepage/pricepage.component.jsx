@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { selectStockPrices } from '../../redux/stock-price/stock-price.selectors.js'
 import { createStructuredSelector } from 'reselect';
 
-import StockPriceCardList from '../../components/stock-price-card-list/stock-price-card-list.component'
+import StockPriceCardListContainer from '../../components/stock-price-card-list/stock-price-card-list.container'
 import AddStockForm from '../../components/add-stock-form/add-stock-form.component';
 import {getCurrentUser,loadStockFromFireStore} from '../../firebase/firebase.utils'
 
@@ -46,7 +46,7 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
           This is suppose to display prices for a stock
         </div>
         <AddStockForm onChange={onChange} onSubmit={onSubmit}/>
-        <StockPriceCardList stocks={stockPrices}/>
+        <StockPriceCardListContainer stocks={stockPrices}/>
       </div>
       
     </StockPriceContainer>

@@ -1,4 +1,6 @@
 export const convertStockData = (data)=>{
+
+    console.log(data)
     let d = new Date();
     let marketInactive = false;
     let time
@@ -28,7 +30,7 @@ export const convertStockData = (data)=>{
     if(marketInactive){
         time = Object.keys(data["Time Series (5min)"])[0].slice(0,10)+" 16:00:00"
     }else{
-        time = Object.keys(data["Time Series (5min)"])[0].slice(0,10)+" "+d.getHours()+":"+minutes+":00"
+        time = Object.keys(data["Time Series (5min)"]).sort((a,b)=>b-a)[0]
     }
 
     let getlatestAvg = ()=>{
