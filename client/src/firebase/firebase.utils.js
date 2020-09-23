@@ -78,6 +78,8 @@ export const loadCartFromFireStore= async(userAuth) =>{
     
 }
 
+
+
 export const addStockToFireStore = async (userAuth, stocks)=>{
     if(!userAuth) return;
     const userRef = firestore.doc(`stocks/${userAuth.uid}`)
@@ -102,6 +104,17 @@ export const addStockToFireStore = async (userAuth, stocks)=>{
     }
 }
 
+export const loadStockFromFireStore= async(userAuth) =>{
+    if(!userAuth) return []
+    const stocksRef = firestore.collection('stocks');
+    const query = stocksRef.where("userId", "==", userAuth.uid);
+    const snapshot = await query.get()
+    const stockName = snapshot.docs.map(doc =>{
+        return doc.data()['stocks']
+    })
+    return stockName[0]
+    
+}
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) =>{
     const collectionRef = firestore.collection(collectionKey);

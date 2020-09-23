@@ -8,15 +8,26 @@ import { createStructuredSelector } from 'reselect';
 
 import StockPriceCardList from '../../components/stock-price-card-list/stock-price-card-list.component'
 import AddStockForm from '../../components/add-stock-form/add-stock-form.component';
+import {getCurrentUser,loadStockFromFireStore} from '../../firebase/firebase.utils'
+
 
 const PricePage = ({fetchStockPricesStart,stockPrices}) => {
   
-  useEffect(() => {
-    fetchStockPricesStart('JETS');
-    fetchStockPricesStart('TSLA');
+  
+  const [addField, setAddField] = useState("")
+
+  useEffect( () => {
+    const getStocks = async()=>{
+      const user = await getCurrentUser();
+      const symbols = await loadStockFromFireStore(user)
+      for(const symbol of symbols){
+        await fetchStockPricesStart(symbol);
+      }
+    }
+    getStocks();
+
   }, [fetchStockPricesStart]);
 
-  const [addField, setAddField] = useState("")
 
   const onChange = (event)=>{
     setAddField(event.target.value.toUpperCase())
