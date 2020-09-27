@@ -67,6 +67,7 @@ export const addCartToFireStore = async (userAuth, cartItems)=>{
     }
 }
 
+
 export const loadCartFromFireStore= async(userAuth) =>{
     const cartsRef = firestore.collection('carts');
     const query = cartsRef.where("userId", "==", userAuth.uid);
@@ -116,6 +117,14 @@ export const loadStockFromFireStore= async(userAuth) =>{
     
 }
 
+
+export const loadStockNewsFromFireStore= async(stockName) =>{
+    const stocksRef = firestore.collection('stockNews').doc(stockName);
+    const snapshot = await stocksRef.get()
+    const stockNews = snapshot.data()
+    return stockNews.data
+}
+
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) =>{
     const collectionRef = firestore.collection(collectionKey);
     
@@ -163,4 +172,18 @@ googleProvider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 export default firebase;
+
+//this function is used for loading stock news to firebase because API request cost money.
+//https://stocknewsapi.com/
+// export const addStockNewsToFireStore = async (stockNews)=>{
+
+    
+//     const stockNewsRef =firestore.doc(`stockNews/${stockNews.data[0].tickers[0]}`)
+    
+//     // const stockNewsRef =firestore.collection("stockNews").doc()
+//     // to use for auto-generate document ID
+
+//     await stockNewsRef.set(stockNews)
+// }
+
 
