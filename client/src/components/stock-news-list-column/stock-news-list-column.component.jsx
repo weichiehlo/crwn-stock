@@ -6,8 +6,8 @@ const StockNewsListColoumn = function ({StocknewsInfo}){
     return(
         <StockPriceListColumnContainer>
             {
-                StocknewsInfo.map((stock, i) => {
-                    return <StockNewsList key= {i} symbol={stock.addField} Stocknews={stock.stockNews}/>
+                Object.keys(StocknewsInfo).map((name, i) => {
+                    return <StockNewsList key= {i} symbol={name} Stocknews={StocknewsInfo[name]}/>
                     })
             }  
         </StockPriceListColumnContainer>

@@ -1,7 +1,7 @@
 import StockNewsActionTypes from './stock-news.type';
 
 const INITIAL_STATE = {
-    stockNews:[],
+    stockNews:{},
     isFetching: false,
     errorMessage:undefined
 };
@@ -17,7 +17,7 @@ const stockNewsReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           isFetching: false,
-          stockNews: [...state.stockNews,...action.payload]
+          stockNews: {...state.stockNews,...action.payload}
         };
       case StockNewsActionTypes.FETCH_STOCK_NEWS_FAILURE:
         return {

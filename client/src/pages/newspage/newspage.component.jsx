@@ -31,9 +31,9 @@ const NewsPage = ({fetchStockNewsStart,stockNews}) => {
         </div>
         <AddStockForm onChange={onChange} onSubmit={onSubmit}/>
         {
-          stockNews.length? 
+          stockNews? 
           <div>
-          <StockNewsListColoumn StocknewsInfo = {[{addField:addField,stockNews:stockNews},{addField:addField,stockNews:stockNews}]}/>
+          <StockNewsListColoumn StocknewsInfo = {stockNews}/>
           </div>
           :
           <div>
