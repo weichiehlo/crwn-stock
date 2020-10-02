@@ -43,7 +43,7 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
     <StockPriceContainer>
       <div>
         <div>
-          This is suppose to display prices for a stock
+          Please Enter the Symbol of the stock
         </div>
         <AddStockForm onChange={onChange} onSubmit={onSubmit}/>
         <StockPriceCardListContainer stocks={stockPrices}/>

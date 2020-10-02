@@ -12,3 +12,5 @@ export const selectIsStockNewsFetching = createSelector(
   [selectNews],
   stockNews => stockNews.isFetching
 );
+
+

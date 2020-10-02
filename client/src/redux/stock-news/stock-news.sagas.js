@@ -15,8 +15,6 @@ export function* fetchStockNewsAsync({payload}) {
     const stockNews = yield loadStockNewsFromFireStore(payload)
     yield put(fetchStockNewsSuccess(stockNews));
 
-    yield put(fetchStockNewsSuccess([123]));
-
   } catch (error) {
     yield put(fetchStockNewsFailure(error.message));
   }

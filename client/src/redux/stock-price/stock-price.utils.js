@@ -1,6 +1,5 @@
 export const convertStockData = (data)=>{
 
-    console.log(data)
     let d = new Date();
     let marketInactive = false;
     let time
