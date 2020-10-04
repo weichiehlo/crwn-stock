@@ -1,18 +1,22 @@
 import React from 'react'
+import FormInput from '../form-input/form-input.component'
+import CustomButton from '../custom-button/custom-button.component';
+import { AddStockFormContainer } from './add-stock-form.styles'
 
-
-const AddStockForm = function({onChange, onSubmit}){
+const AddStockForm = function({onChange,onSubmit,value}){
+    
     return (
-        
-        <form onSubmit={onSubmit}>
-        <div>
-                <input 
-                type='text' 
-                placeholder="Please Add the Stock"
-                onChange={onChange}/>
-        </div>
-        <button>Add Stock</button>
-      </form>
+          <AddStockFormContainer onSubmit={onSubmit}>
+            <FormInput
+                type='text'
+                name='stockName'
+                value={value}
+                onChange={onChange}
+                label='Please Add the Stock'
+                required
+              />
+            <CustomButton type='submit'>Add</CustomButton>
+          </AddStockFormContainer>
         
     )
 }

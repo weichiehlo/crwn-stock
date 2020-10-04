@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { fetchStockNewsStart } from '../../redux/stock-news/stock-news.actions'
 
-import { NewsPageContainer } from './newspage.styles';
+import { NewsPageContainer,NewsPageHeaderContainer,NewPageTitle } from './newspage.styles';
 import { selectStockNews } from '../../redux/stock-news/stock-news.selectors'
 import AddStockForm from '../../components/add-stock-form/add-stock-form.component';
 
@@ -26,20 +26,14 @@ const NewsPage = ({fetchStockNewsStart,stockNews}) => {
 
   return (
     <NewsPageContainer>
-        <div>
-          Please Enter the Symbol of the stock
-        </div>
-        <AddStockForm onChange={onChange} onSubmit={onSubmit}/>
-        {
-          stockNews? 
-          <div>
-          <StockNewsListColoumn StocknewsInfo = {stockNews}/>
-          </div>
-          :
-          <div>
-          No News Entered
-          </div>
-        }
+        <NewsPageHeaderContainer>
+          <NewPageTitle>
+            Stock News
+          </NewPageTitle>
+        </NewsPageHeaderContainer>
+        <AddStockForm onChange={onChange} onSubmit={onSubmit} value={addField}/>
+        <StockNewsListColoumn StocknewsInfo = {stockNews}/>
+        
        
     </NewsPageContainer>
   );
