@@ -8,5 +8,6 @@ export const StockPriceListContainer = styled.div`
   justify-content: center;
   padding: 10px 20px;
   grid-gap: 20px 50px;
+  flex-wrap: wrap;
 `;
 

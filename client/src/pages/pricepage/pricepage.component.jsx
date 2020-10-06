@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { StockPriceContainer } from './pricepage.styles';
+import { StockPriceContainer,StockPriceTitle,StockPriceHeaderContainer } from './pricepage.styles';
 import { fetchStockPricesStart } from '../../redux/stock-price/stock-price.actions.js'
 import { connect } from 'react-redux';
 import { selectStockPrices } from '../../redux/stock-price/stock-price.selectors.js'
@@ -20,9 +20,12 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
     const getStocks = async()=>{
       const user = await getCurrentUser();
       const symbols = await loadStockFromFireStore(user)
-      for(const symbol of symbols){
-        await fetchStockPricesStart(symbol);
+      if(symbols){
+        for(const symbol of symbols){
+          await fetchStockPricesStart(symbol);
+        }
       }
+      
     }
     getStocks();
 
@@ -41,14 +44,13 @@ const PricePage = ({fetchStockPricesStart,stockPrices}) => {
 
   return (
     <StockPriceContainer>
-      <div>
-        <div>
-          Please Enter the Symbol of the stock
-        </div>
-        <AddStockForm onChange={onChange} onSubmit={onSubmit}/>
-        <StockPriceCardListContainer stocks={stockPrices}/>
-      </div>
-      
+      <StockPriceHeaderContainer>
+        <StockPriceTitle>
+          Stock Price
+        </StockPriceTitle>
+      </StockPriceHeaderContainer>
+      <AddStockForm onChange={onChange} onSubmit={onSubmit} value={addField}/>
+      <StockPriceCardListContainer stocks={stockPrices}/>      
     </StockPriceContainer>
   );
 }

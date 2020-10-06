@@ -15,7 +15,7 @@ const AddStockForm = function({onChange,onSubmit,value}){
                 label='Please Add the Stock'
                 required
               />
-            <CustomButton type='submit'>Add</CustomButton>
+            <CustomButton type='submit'>Add stock</CustomButton>
           </AddStockFormContainer>
         
     )
