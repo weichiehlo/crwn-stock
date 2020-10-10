@@ -9,5 +9,6 @@ export const StockPriceListContainer = styled.div`
   padding: 10px 20px;
   grid-gap: 20px 50px;
   flex-wrap: wrap;
+  
 `;
 

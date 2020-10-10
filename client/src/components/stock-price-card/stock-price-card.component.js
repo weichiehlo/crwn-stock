@@ -5,12 +5,14 @@ import {StockPriceContainer, RobotImage, RobotInfo,RobotTitle} from './stock-pri
 
 
 const StockPriceCard = function({id, name, price, average, max, min}){
+    const color1= '#'+Math.floor(Math.random()*16777215).toString(16)
+    const color2= '#'+Math.floor(Math.random()*16777215).toString(16)
     return(
         
-        <StockPriceContainer>
+        <StockPriceContainer color1={color1} color2={color2}>
             <RobotTitle>{name}</RobotTitle>
             <RobotImage src={`https://robohash.org/${id}?200x200`} alt='robots'></RobotImage>
-            <RobotInfo>
+            <RobotInfo color1={color1}>
                 <p>Current Price ${price}</p>
                 <p>Daily Average Price ${average}</p>
                 <p>Daily High ${max}</p>

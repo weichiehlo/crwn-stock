@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 
+
 export const StockPriceContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10px 20px;
-  background-color:grey;
-  flex: 1 0 21%;
+  background-image: linear-gradient(to bottom right, ${props => props.color1}, ${props => props.color2});
   align-items:center;
+
 `;
 
 export const RobotInfo = styled.div`
   display: flex;
   flex-direction: column;
-  background-color:grey;
+  padding: 1px 2px;
+  margin-top: 10px;
+  text-shadow: 2px 2px 5px ${props => props.color1};
+
 `;
 
 
