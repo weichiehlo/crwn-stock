@@ -1,11 +1,12 @@
 import React from 'react'
 import StockNews from  '../stock-news/stock-news.component'
-import {StockNewsListContainer} from './stock-news-list.styles'
+import {StockNewsListContainer,StockNewsListTitle,StockNewsListCollections} from './stock-news-list.styles'
 
 const StockNewsList = function({symbol, Stocknews}){
     return(
         <StockNewsListContainer>
-            <h1>Stock News for {symbol}</h1>
+            <StockNewsListTitle>Stock News for {symbol}</StockNewsListTitle>
+            <StockNewsListCollections>
             {
                 Stocknews.map((news,index)=>{
                     const {news_url, image_url, title, text, source_name, date} = news;
@@ -15,6 +16,7 @@ const StockNewsList = function({symbol, Stocknews}){
                     )
                 })
             }
+            </StockNewsListCollections>
         </StockNewsListContainer>
     )
 }

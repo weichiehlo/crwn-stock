@@ -8,6 +8,7 @@ export const StockPriceContainer = styled.div`
   padding: 10px 20px;
   background-image: linear-gradient(to bottom right, ${props => props.color1}, ${props => props.color2});
   align-items:center;
+  border-radius: 25px;
 
 `;
 
@@ -26,6 +27,8 @@ export const RobotImage = styled.img`
 `;
 
 export const RobotTitle = styled.h1`
-  color: lightblue;
+  color: black;
+  padding: 1px 15px;
+  border-bottom: 5px solid red;
 `;
 
