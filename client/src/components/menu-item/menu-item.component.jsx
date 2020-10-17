@@ -12,7 +12,7 @@ import {
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <MenuItemContainer
     size={size}
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
+    onClick={()=>window.open(linkUrl, '_blank')}
   >
     <BackgroundImageContainer
       className='background-image'
@@ -20,7 +20,7 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
     />
     <ContentContainer className='content'>
       <ContentTitle>{title.toUpperCase()}</ContentTitle>
-      <ContentSubtitle>SHOP NOW</ContentSubtitle>
+      <ContentSubtitle>LEARN MORE</ContentSubtitle>
     </ContentContainer>
   </MenuItemContainer>
 );

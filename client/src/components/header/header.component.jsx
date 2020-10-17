@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -31,8 +30,8 @@ const Header = ({ currentUser, hidden, signOutStart,cartItems,stockNames}) => (
       <OptionLink to='/prices'>PRICE</OptionLink>
     </PagesNavContainer>
     <OptionsContainer>
-      <OptionLink to='/shop'>SHOP</OptionLink>
-      <OptionLink to='/shop'>CONTACT</OptionLink>
+      <OptionLink to='/checkout'>DONATE</OptionLink>
+      <OptionLink to='/contact'>CONTACT</OptionLink>
       {currentUser ? (
         <OptionLink as='div' onClick={()=>signOutStart({cartItems:cartItems,stockNames:stockNames})}>
           SIGN OUT
@@ -40,7 +39,6 @@ const Header = ({ currentUser, hidden, signOutStart,cartItems,stockNames}) => (
       ) : (
         <OptionLink to='/signin'>SIGN IN</OptionLink>
       )}
-      <CartIcon />
     </OptionsContainer>
     {hidden ? null : <CartDropdown />}
   </HeaderContainer>
