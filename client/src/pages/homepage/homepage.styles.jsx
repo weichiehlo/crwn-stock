@@ -17,5 +17,5 @@ export const HomePageTitle = styled.h1`
 	line-height: 44px;
 	letter-spacing: -2px;
 	font-weight: bold;
-  border-bottom: 3px solid darkgrey;
+    border-bottom: 3px solid darkgrey;
 `;

@@ -20,32 +20,24 @@ export const CheckoutPageContainer = styled.div`
 
 export const CheckoutHeaderContainer = styled.div`
   width: 100%;
-  height: 40px;
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid darkgrey;
+  justify-content: center;
+  border-bottom: 3px solid darkgrey;
 `;
 
-export const HeaderBlockContainer = styled.div`
-  text-transform: capitalize;
-  width: 23%;
-
-  &:last-child {
-    width: 8%;
-  }
-
-  @media screen and (max-width: 800px) {
-    width: 22%
-
-    &:last-child {
-      width: 12%;
-    }
-  }
+export const HeaderBlockContainer = styled.h2`
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+	color: #444;
+	margin: 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 51px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
 `;
 
 export const TotalContainer = styled.div`
-  margin-top: 30px;
-  margin-left: auto;
+  margin-top: 30rem;
   font-size: 36px;
 `;
 

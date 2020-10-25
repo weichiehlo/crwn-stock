@@ -1,14 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, {useState} from 'react';
 
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-
-import {
-  selectCartItems,
-  selectCartTotal
-} from '../../redux/cart/cart.selectors';
+import DonationForm from '../../components/donation-form/donation-form.component'
 
 import {
   CheckoutPageContainer,
@@ -18,41 +11,43 @@ import {
   WarningContainer
 } from './checkout.styles';
 
-const CheckoutPage = ({ cartItems, total }) => (
-  <CheckoutPageContainer>
-    <CheckoutHeaderContainer>
-      <HeaderBlockContainer>
-        <span>Product</span>
-      </HeaderBlockContainer>
-      <HeaderBlockContainer>
-        <span>Description</span>
-      </HeaderBlockContainer>
-      <HeaderBlockContainer>
-        <span>Quantity</span>
-      </HeaderBlockContainer>
-      <HeaderBlockContainer>
-        <span>Price</span>
-      </HeaderBlockContainer>
-      <HeaderBlockContainer>
-        <span>Remove</span>
-      </HeaderBlockContainer>
-    </CheckoutHeaderContainer>
-    {cartItems.map(cartItem => (
-      <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-    ))}
-    <TotalContainer>TOTAL: ${total}</TotalContainer>
-    <WarningContainer>
-      *Please use the following test credit card for payments*
-      <br />
-      4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
-    </WarningContainer>
-    <StripeCheckoutButton price={total} />
-  </CheckoutPageContainer>
-);
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  total: selectCartTotal
-});
 
-export default connect(mapStateToProps)(CheckoutPage);
+const CheckoutPage = () => {
+  const [total, setTotal] = useState("")
+
+  const onChange = (event)=>{
+    const value = parseFloat(event.target.value)
+    value?
+    setTotal(value)
+    :
+    setTotal(0)
+  }
+
+  return (
+    <CheckoutPageContainer>
+      <CheckoutHeaderContainer>
+        <HeaderBlockContainer>
+          <span>Thank You For Your Donation</span>
+        </HeaderBlockContainer>
+      </CheckoutHeaderContainer>
+      <DonationForm onChange={onChange} value={total}/>
+      <TotalContainer>Donation Amount: ${total}</TotalContainer>
+      <WarningContainer>
+        *Please use the following test credit card for payments*
+        <br />
+        4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
+      </WarningContainer>
+      {
+        total > 0?
+          <StripeCheckoutButton price={total} />
+        :
+        <div></div>
+      }
+      
+
+    </CheckoutPageContainer>
+  )
+};
+
+export default CheckoutPage;
